@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="assignment_2425.FoodPage"
+             Title="Categories">
+    <Grid>
+        <!--Shows the category buttons for the user to choose (burgers and drinks)-->
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <VerticalStackLayout>
+            <Button Text="Burgers" Margin="{OnIdiom Phone='0,10', Tablet='150'}" Clicked="categoryClick" WidthRequest="{OnIdiom Phone='200', Tablet='150'}"/>
+            <Button Text="Drinks" Clicked="categoryClick" WidthRequest="{OnIdiom Phone='200', Tablet='150'}"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

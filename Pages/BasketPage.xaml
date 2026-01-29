@@ -1,0 +1,38 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:assignment_2425"
+             xmlns:models="clr-namespace:assignment_2425.Models"
+             xmlns:database="clr-namespace:assignment_2425.Database"
+             x:Class="assignment_2425.BasketPage"
+             Title="Basket">
+    <Grid>
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <ScrollView>
+            <StackLayout>
+                <!--UNCOMMENT BELOW TO BE ABLE TO PICK WHICH USER TO VIEW BASKET-->
+                <!--<Picker x:Name="UserPicker" Title="Select User" SelectedIndexChanged="OnUserSelected" />-->
+                <!--This is to show the basket items-->
+                <CollectionView ItemsSource="{Binding BasketItems}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:BasketItem">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="{OnIdiom Tablet=Center}">
+                                <Image Source="{Binding Image}" WidthRequest="50" HeightRequest="50" />
+                                <!--<Label Text="Hello"/>-->
+                                <Label Text="{Binding Item}" FontSize="Medium" VerticalOptions="Center" Margin="15,0" />
+                                <Label Text="{Binding Price, StringFormat='£{0:F2}'}" FontSize="Medium" VerticalOptions="Center" />
+                                <!--<Label HorizontalOptions="FillAndExpand"/>-->
+                                <ImageButton x:Name="BinButton" Source="bin_icon.svg" Clicked="onDeleteButtonClicked" VerticalOptions="Center" MaximumWidthRequest="30" MaximumHeightRequest="30">
+                                    <ImageButton.BackgroundColor>
+                                        <AppThemeBinding Light="Transparent" Dark="White" />
+                                    </ImageButton.BackgroundColor>
+                                </ImageButton>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Text="Proceed to Checkout" Margin="10" Clicked="goToCheckout" WidthRequest="{OnIdiom Phone='300', Tablet='200'}"/>
+                <Button Text="Clear Basket" Margin="120,30" Clicked="onClearBasketClicked" WidthRequest="{OnIdiom Phone='150', Tablet='150'}"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

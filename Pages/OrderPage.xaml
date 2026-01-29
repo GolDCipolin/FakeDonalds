@@ -1,0 +1,27 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:assignment_2425"
+             x:Class="assignment_2425.OrderPage"
+             xmlns:models="clr-namespace:assignment_2425.Models"
+             Title="Your Orders">
+    <Grid>
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <!--Lets user pull down to refresh the list-->
+        <RefreshView x:Name="RefreshControl" IsRefreshing="{Binding IsRefreshing}" Refreshing="onRefresh">
+            <!--Lets user to scroll through their order page-->
+            <CollectionView ItemsSource="{Binding UserOrders}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Orders">
+                        <!--Displays the order number, order date, item of what has been ordered, and the price-->
+                        <StackLayout HorizontalOptions="{OnIdiom Tablet=Center}">
+                            <Label Text="{Binding OrderNumber, StringFormat='Order Number: {0}'}" />
+                            <Label Text="{Binding OrderDate, StringFormat='Order Date: {0:MM/dd/yyyy}'}" />
+                            <Label Text="{Binding ItemName, StringFormat='Ordered Items: {0}'}" />
+                            <Label Text="{Binding Price, StringFormat='&#163;{0:F2}'}" Margin="0,0,0,50" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.Maui.Controls"
+             x:Class="assignment_2425.CheckoutPage"
+             Title="CheckoutPage">
+    <Grid>
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <StackLayout Padding="10">
+            <Label Text="Choose Delivery Option" FontSize="Large" HorizontalOptions="Center" Margin="0,10" />
+
+            <!--dropdown menu where the user will select the delivery method-->
+            <Picker x:Name="DeliveryOptionPicker" Title="Select Delivery Option" SelectedIndexChanged="onDeliveryOptionChanged" HorizontalOptions="{OnIdiom Phone='Center', Tablet=Center}">
+                <Picker.Items>
+                    <x:String>Deliver to Table (Scan QR Code)</x:String>
+                    <x:String>Home Delivery</x:String>
+                    <x:String>Collect from Store (Geolocation)</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <StackLayout x:Name="TableDeliveryLayout" IsVisible="False">
+                <Label Text="Scan QR Code at Your Table" FontSize="Medium" Margin="0,10" HorizontalOptions="{OnIdiom Phone=Center, Tablet=Center}"/>
+                <!--QR code scanner with using ZXing-->
+                <zxing:CameraBarcodeReaderView x:Name="BarcodeReader" BarcodesDetected="onBarcodeDetected" IsDetecting="True" WidthRequest="400" HeightRequest="600" />
+            </StackLayout>
+
+            <StackLayout x:Name="HomeDeliveryLayout" IsVisible="False">
+                <Label Text="Enter Home Address" FontSize="Medium" Margin="0,10" HorizontalOptions="{OnIdiom Phone=Center, Tablet=Center}"/>
+                <Entry x:Name="HomeAddressEntry" Placeholder="Enter Address" MaximumWidthRequest="{OnIdiom Phone='400', Tablet='400'}"/>
+                <!--Microphone icon to use voice input-->
+                <Border Stroke="Black" StrokeThickness="1" Margin="170,5"  MaximumWidthRequest="{OnIdiom Phone='380', Tablet='400'}">
+                    <ImageButton Source="mic_icon.svg" Clicked="onSpeakAddressClicked" MaximumWidthRequest="40" MaximumHeightRequest="40"/>
+                </Border>
+                <Button Text="Confirm Home Delivery" Clicked="onConfirmHomeDeliveryClicked" HorizontalOptions="{OnIdiom Phone=Center, Tablet=Center}" />
+            </StackLayout>
+            <!--Checks location for store search-->
+            <StackLayout x:Name="StoreCollectionLayout" IsVisible="False">
+                <Label Text="Finding Nearby Stores..." FontSize="Medium" Margin="0,10" HorizontalOptions="{OnIdiom Phone=Center, Tablet=Center}"/>
+                <Button Text="Find Nearest Store" Clicked="onFindNearestStoreClicked" HorizontalOptions="{OnIdiom Phone=Center, Tablet=Center}"/>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>

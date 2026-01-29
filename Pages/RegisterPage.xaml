@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="assignment_2425.RegisterPage"
+             Title="RegisterPage">
+    <Grid>
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <ScrollView>
+            <VerticalStackLayout Padding="20">
+                <Label Text="Register" FontSize="32" HorizontalOptions="Center"/>
+                <!--Shows the entry for the username, email and password in register page-->
+                <Entry x:Name="UsernameEntry" Placeholder="Username"/>
+                <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
+                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" TextChanged="passwordTextChanged"/>
+                <!--For show password and button-->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                    <CheckBox x:Name="ShowPasswordCheckBox" IsChecked="False" CheckedChanged="OnShowPasswordChanged"/>
+                    <Label Text="Show Password" VerticalOptions="Center"/>
+                </StackLayout>
+                <!--button to let user register-->
+                <Button Text="Register" Clicked="onRegisterClicked"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

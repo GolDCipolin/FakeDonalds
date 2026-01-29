@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="assignment_2425.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:assignment_2425"
+    
+    Title="assignment_2425">
+
+    <!--footer where displays home, account, food, basket icons-->
+    <TabBar>
+        <!--home icon for the bottom-->
+        <ShellContent Title="Home"
+                      Icon="home_icon.svg"
+                      ContentTemplate="{DataTemplate local:MainPage}"
+                      Route="MainPage"/>
+        <!--22491886-->
+        <!--account icon for the bottom-->
+        <ShellContent Title="Account"
+                      Icon="account_icon.svg"
+                      ContentTemplate="{DataTemplate local:LoginPage}"
+                      Route="LoginPage"/>
+        <!--food icon for the bottom-->
+        <ShellContent Title="Food"
+                      Icon="burger_icon.svg"
+                      ContentTemplate="{DataTemplate local:FoodPage}"
+                      Route="FoodPage"/>
+        <!--basket icon for the bottom-->
+        <ShellContent Title="Basket"
+                      Icon="basket_icon.svg"
+                      ContentTemplate="{DataTemplate local:BasketPage}"
+                      Route="BasketPage"/>
+    </TabBar>
+    <!--22491886-->
+    <!--22491886-->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Red" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+                <Setter Property="Shell.TabBarTitleColor" Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Black" />
+            </Style>
+            <Style TargetType="Shell">
+                <Setter Property="BackgroundColor" Value="LightCoral" />
+                <Setter Property="ForegroundColor" Value="Black" />
+                <Setter Property="TitleColor" Value="Black" />
+                <Setter Property="DisabledColor" Value="Gray" />
+                <Setter Property="UnselectedColor" Value="Black" />
+                <Setter Property="TabBarBackgroundColor" Value="LightCoral" />
+                <Setter Property="TabBarTitleColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+    <!--22491886-->
+</Shell>

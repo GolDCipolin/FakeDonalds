@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="assignment_2425.LoginPage"
+             Title="LoginPage"
+             Shell.NavBarIsVisible="False">
+    <!--Lets the user to swipe down to reload-->
+    <Grid>
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+            <ScrollView>
+                <VerticalStackLayout Padding="20">
+                    <!--logged in user view-->
+                    <StackLayout x:Name="LoggedIn" IsVisible="False">
+                        <Label Text="User Page" FontSize="32" HorizontalOptions="Center" Margin="{OnIdiom Tablet='50'}"/>
+                        <!--lets the user to view previous orders-->
+                        <Button Text="Orders" Margin="0,20" Clicked="goOrderPage" WidthRequest="{OnIdiom Phone='150',Tablet='150'}"/>
+                        <!--text to speech toggle-->
+                        <Label Text="TTS" FontSize="20" HorizontalOptions="Center"/>
+                        <Switch IsToggled="false" Toggled="onToggled" x:Name="ttsswitch" HorizontalOptions="Center"/>
+                        <!--dark mode toggle-->
+                        <Label Text="Dark Mode" FontSize="20" HorizontalOptions="Center"/>
+                        <Switch IsToggled="false" Toggled="onToggledDarkMode" x:Name="darkmodeswitch" HorizontalOptions="Center"/>
+                        <!--log out button-->
+                        <Button Text="Log off" Clicked="onLogoffClicked" WidthRequest="{OnIdiom Phone='150', Tablet='150'}"/>
+                    </StackLayout>
+
+                    <!--login view-->
+                    <StackLayout x:Name="LogIn" IsVisible="True">
+                        <!--username input-->
+                        <Entry x:Name="UsernameEntry" Placeholder="Username"/>
+                        <!--password input-->
+                        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" TextChanged="passwordTextChanged"/>
+                        <!--For show password and button-->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                            <CheckBox x:Name="ShowPasswordCheckBox" IsChecked="False" CheckedChanged="OnShowPasswordChanged"/>
+                            <Label Text="Show Password" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <!--Login and register buttons-->
+                        <Button Text="Login" Clicked="onLoginClicked"/>
+                        <Button Text="Register" Clicked="onRegisterClicked"/>
+                    </StackLayout>
+                </VerticalStackLayout>
+            </ScrollView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

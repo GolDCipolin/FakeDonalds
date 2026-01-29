@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="assignment_2425.MainPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <!--allows user to scroll-->
+        <ScrollView>
+            <VerticalStackLayout Padding="30,0">
+                <!--head section-->
+                <Grid>
+                    <!--These are for the image and title rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!--makes the position of the image and title side by side-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                <!--App icon image-->
+                <Image
+                    Source="fakedonalds_icon.png"
+                    Margin="{OnIdiom Phone='0,10,0,0', Tablet='450,20,0,0'}"
+                    HeightRequest="100"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Fake Donalds icon"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="{OnIdiom Phone=Start, Tablet=Center}"/>
+
+                <!--App icon label-->
+                <Label
+                     Text="FakeDonalds"
+                     SemanticProperties.HeadingLevel="Level1"
+                     Margin="40,40,0,0"
+                     Grid.Column="1"
+                     FontSize="30"
+                     FontAttributes="Bold"
+                 />
+                </Grid>
+
+                <!--Label for burgers category-->
+                <Label Text="Burgers" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center" Margin="30"/>
+
+                <!--Lets the user to horizontally scroll through the burger items-->
+                <CarouselView HeightRequest="215" x:Name="Burgers" ItemsSource="{Binding BurgersCollection}" WidthRequest="{OnIdiom Tablet='400', Phone='Center'}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="BorderContainer" StrokeThickness="1" Padding="10">
+                                <Border.Stroke>
+                                    <AppThemeBinding Light="Black" Dark="White" />
+                                </Border.Stroke>
+                                <VerticalStackLayout>
+                                    <Image Source="{Binding Image}" HeightRequest="150" Aspect="AspectFit"/>
+                                    <Label Text="{Binding Item}" FontSize="16" HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+
+                <Label Text="Drinks" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center" Margin="10"/>
+
+                <!--Lets the user to horizontally scroll through the drinks items-->
+                <CarouselView HeightRequest="215" x:Name="Drinks" ItemsSource="{Binding DrinksCollection}" WidthRequest="{OnIdiom Tablet='400', Phone='Center'}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="BorderContainer" StrokeThickness="1" Padding="10">
+                                <Border.Stroke>
+                                    <AppThemeBinding Light="Black" Dark="White" />
+                                </Border.Stroke>
+                                <VerticalStackLayout>
+                                    <Image Source="{Binding Image}" HeightRequest="150" Aspect="AspectFit"/>
+                                    <Label Text="{Binding Item}" FontSize="16" HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <!--<Label Text="Drink TEMP" HorizontalOptions="Center" Margin="0,1" FontSize="20"/>-->
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

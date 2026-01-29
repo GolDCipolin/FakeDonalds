@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="assignment_2425.DrinkPage"
+             Title="DrinkPage">
+    <Grid>
+        <Image x:Name="BackgroundImage" Source="background.jpg" Aspect="AspectFill" Opacity="0.5"/>
+        <Grid>
+            <!--shows all the drinks-->
+            <CollectionView  x:Name="Drinks" ItemsSource="{Binding DrinksCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeThickness="1" Padding="10">
+                            <Border.Stroke>
+                                <AppThemeBinding Light="Black" Dark="White" />
+                            </Border.Stroke>
+                            <VerticalStackLayout>
+                                <Image Source="{Binding Image}" HeightRequest="150" Aspect="AspectFit" Margin="10"/>
+                                <Label Text="{Binding Item}" FontSize="16" HorizontalOptions="Center"/>
+                                <Label Text="{Binding Price, StringFormat='£{0:F2}'}" FontSize="16" HorizontalOptions="Center"/>
+                                <Button Text="Add Basket" Margin="132,10" Clicked="onAddToBasketClicked" BindingContext="{Binding}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>
